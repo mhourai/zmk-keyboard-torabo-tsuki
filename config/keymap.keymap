@@ -7,15 +7,14 @@
     combos {
         compatible = "zmk,combos";
 
-        bt_clear {
-            bindings = <&bt BT_CLR>;
-            key-positions = <13 14>;
-            layers = <2>;
-        };
-
-        layer-setting {
+        setting {
             bindings = <&to 6>;
             key-positions = <8 9>;
+        };
+
+        scroll {
+            bindings = <&to 4>;
+            key-positions = <28 27>;
         };
     };
 
@@ -25,7 +24,7 @@
         layer_0 {
             bindings = <
 &kp Q             &kp W      &kp E     &kp R             &kp T          &kp Y                 &kp U        &kp I        &kp O      &kp P
-&mt LEFT_SHIFT A  &lt 4 S    &lt 5 D   &lt 2 F           &kp G          &kp H                 &kp J        &kp K        &kp L      &mt LEFT_SHIFT MINUS
+&mt LEFT_SHIFT A  &kp S      &lt 5 D   &lt 2 F           &kp G          &kp H                 &kp J        &kp K        &kp L      &mt LEFT_SHIFT MINUS
 &mt LEFT_SHIFT Z  &kp X      &kp C     &kp V             &kp B          &kp N                 &kp M        &kp COMMA    &kp DOT    &mt LEFT_SHIFT SLASH
 &kp LEFT_GUI      &kp SPACE  &kp LALT  &kp LEFT_CONTROL  &mt SPACE TAB  &mt LEFT_SHIFT GRAVE  &lt 2 ENTER  &lt 1 SPACE  &kp RCTRL
             >;
@@ -66,10 +65,10 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &bootloader  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             label = "scrool";
