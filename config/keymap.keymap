@@ -1,7 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 / {
@@ -39,24 +38,30 @@
 &kp PLUS  &kp RIGHT_BRACE  &kp PIPE     &kp LBKT      &kp BSLH              &kp DOT    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_0
 &trans    &trans           &trans       &trans        &kp LSHFT             &trans     &kp ENTER        &kp SPACE        &trans
             >;
+
+            label = "num & mark";
         };
 
         layer_2 {
             bindings = <
-&trans   &trans   &trans        &trans        &trans     &kp LS(PG_UP)  &kp LS(N7)      &kp UP_ARROW      &kp LS(N9)         &kp BACKSPACE
-&trans   &trans   &trans        &trans        &trans      &kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN          &kp RIGHT          &kp COLON
-&trans   &trans   &trans        &trans        &trans      &kp LS(MINUS)  &kp LS(EQUAL)   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH
-&trans      &trans            &trans      &trans      &trans      &trans         &trans          &kp TAB           &trans
+&trans  &trans  &trans  &trans  &trans  &kp LS(PG_UP)  &trans          &kp UP_ARROW  &trans     &kp BACKSPACE
+&trans  &trans  &trans  &trans  &trans  &kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN      &kp RIGHT  &trans
+&trans  &trans  &trans  &trans  &trans  &trans         &trans          &trans        &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans         &trans          &trans        &trans
             >;
+
+            label = "arrow";
         };
 
         layer_3 {
             bindings = <
-&trans   &trans   &trans        &trans        &trans      &trans           &trans   &trans    &trans    &trans
-&trans   &trans   &trans        &trans        &trans      &trans           &trans   &trans    &trans    &trans
-&trans   &trans   &trans        &trans        &trans      &trans           &trans   &mkp MB1  &mkp MB2  &trans
-&none    &none    &none         &kp DELETE    &kp TAB     &none            &none      &none          &none
+&trans  &trans  &trans  &trans      &trans   &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans      &trans   &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans      &trans   &trans  &trans  &mkp MB1  &mkp MB2  &trans
+&none   &none   &none   &kp DELETE  &kp TAB  &none   &none   &none     &none
             >;
+
+            label = "mouse";
         };
 
         layer_4 {
@@ -66,6 +71,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans
             >;
+
+            label = "scrool";
         };
 
         layer_5 {
@@ -75,6 +82,8 @@
 &trans   &trans         &trans  &kp RG(V)         &kp RS(RC(N))      &trans   &trans    &trans   &trans   &trans
 &trans   &trans         &trans  &kp RS(RG(LEFT))  &kp RS(RG(RIGHT))  &kp TAB  &kp HOME  &kp END  &kp ESC
             >;
+
+            label = "shortcut";
         };
 
         layer_6 {
