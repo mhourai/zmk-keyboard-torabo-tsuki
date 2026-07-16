@@ -1,4 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <input/processors.dtsi>
 #include "torabo_tsuki_layouts.dtsi"
 
 / {
@@ -87,6 +88,9 @@
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        // Auto mouse layer: moving the trackball activates layer 1 (mouse layer)
+        // and keeps it active for up to 10s after the last movement.
+        input-processors = <&zip_temp_layer 1 10000>;
     };
 
     vbatt: vbatt {
@@ -158,6 +162,24 @@
         power-gpios = <&bmp 14 GPIO_ACTIVE_HIGH>;
         // snipe-layers = <1>;
         // scroll-layers = <2 3>;
-        automouse-layer = <1>;
+        // Auto mouse layer is handled via the temp-layer input processor below instead.
     };
+};
+
+&zip_temp_layer {
+    // Ignore pointer movement that happens right after typing, so brushing the
+    // trackball mid-sentence doesn't accidentally trigger the mouse layer.
+    require-prior-idle-ms = <200>;
+    // Key positions that can be pressed without exiting the mouse layer while it's
+    // active: the mouse click keys themselves (D/F/J/K) and the thumb-row
+    // modifiers you may want to hold while clicking/dragging (GUI, ALT, the
+    // shift/language mod-taps, and right ctrl).
+    excluded-positions = <12 13 16 17 31 32 35 36 38>;
+};
+
+&mkp_input_listener {
+    // Clicking a mouse button re-arms the mouse layer with a short timeout, so it
+    // exits quickly right after a click unless the trackball keeps moving (e.g.
+    // during a drag), in which case trackball_listener's longer timeout wins.
+    input-processors = <&zip_temp_layer 1 250>;
 };
