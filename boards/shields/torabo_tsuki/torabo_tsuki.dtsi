@@ -88,9 +88,9 @@
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        // Auto mouse layer: moving the trackball activates layer 1 (mouse layer)
+        // Auto mouse layer: moving the trackball activates layer 3 (mouse layer)
         // and keeps it active for up to 10s after the last movement.
-        input-processors = <&zip_temp_layer 1 10000>;
+        input-processors = <&zip_temp_layer 3 10000>;
     };
 
     vbatt: vbatt {
@@ -171,15 +171,15 @@
     // trackball mid-sentence doesn't accidentally trigger the mouse layer.
     require-prior-idle-ms = <200>;
     // Key positions that can be pressed without exiting the mouse layer while it's
-    // active: the mouse click keys themselves (D/F/J/K) and the thumb-row
-    // modifiers you may want to hold while clicking/dragging (GUI, ALT, the
-    // shift/language mod-taps, and right ctrl).
-    excluded-positions = <12 13 16 17 31 32 35 36 38>;
+    // active: the mouse click keys themselves (COMMA/DOT on layer_3) and the
+    // thumb-row modifiers you may want to hold while clicking/dragging (GUI,
+    // ALT, CTRL, the shift/grave mod-tap, and right ctrl).
+    excluded-positions = <27 28 30 32 33 35 38>;
 };
 
-&mkp_input_listener {
-    // Clicking a mouse button re-arms the mouse layer with a short timeout, so it
-    // exits quickly right after a click unless the trackball keeps moving (e.g.
-    // during a drag), in which case trackball_listener's longer timeout wins.
-    input-processors = <&zip_temp_layer 1 250>;
-};
+// Note: shortening the mouse layer's timeout right after a mouse-button click
+// (via &mkp_input_listener) isn't wired up here. That node is only defined once
+// config/keymap.keymap's `#include <behaviors.dtsi>` is processed, which happens
+// after this file in the devicetree merge order, so referencing it from here
+// fails to build. It would need to live inside keymap.keymap instead, which is
+// managed by the keymap-editor tool and may not preserve a hand-added block.
