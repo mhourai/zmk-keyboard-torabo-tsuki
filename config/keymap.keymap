@@ -2,7 +2,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 / {
     combos {
@@ -34,10 +33,10 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
-&trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans
-&trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans
+&kp ESC   &kp EXCL         &kp AT_SIGN  &kp HASH      &kp DOLLAR            &kp ASTRK  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp BSPC
+&kp AMPS  &kp PERCENT      &kp CARET    &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp PLUS   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp MINUS
+&kp PLUS  &kp RIGHT_BRACE  &kp PIPE     &kp LBKT      &kp BSLH              &kp DOT    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_0
+&trans    &trans           &trans       &trans        &kp LSHFT             &trans     &kp ENTER        &kp SPACE        &trans
             >;
         };
 
