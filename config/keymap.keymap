@@ -97,3 +97,18 @@
         };
     };
 };
+
+&mkp_input_listener {
+    // Clicking a mouse button re-arms the mouse layer (layer 3) with a short
+    // timeout, so it exits quickly right after a click unless the trackball
+    // keeps moving (e.g. during a drag), in which case trackball_listener's
+    // longer timeout in torabo_tsuki.dtsi wins.
+    //
+    // NOTE: this block must stay in keymap.keymap, not torabo_tsuki.dtsi -
+    // mkp_input_listener only exists once this file's `#include
+    // <behaviors.dtsi>` is processed, and torabo_tsuki.dtsi is merged earlier
+    // in the devicetree build, so referencing it from there fails to build.
+    // If the keymap-editor tool ever regenerates this file without this
+    // block, it needs to be re-added here.
+    input-processors = <&zip_temp_layer 3 250>;
+};
